@@ -2,17 +2,17 @@ export default [
   {
     path: '/login',
     name: '登录页',
-    component: () => import('@/views/userPages/Login')
+    component: () => import('@/views/UserPages/Login')
   },
   {
     path: '/register',
     name: '注册页',
-    component: () => import('@/views/userPages/Register')
+    component: () => import('@/views/UserPages/Register')
   },
   {
     path: '/lock',
     name: 'lock',
-    component: () => import('@/views/userPages/Lock')
+    component: () => import('@/views/UserPages/Lock')
   },
   // {
   //   path: '/timeline',
@@ -25,9 +25,3 @@ export default [
   //   component: () => import('@/views/userPages/UserProfile')
   // }
 ]
-
-export const Login = {
-  path: '/login',
-  name: '登录页',
-  component: () => import('@/views/userPages/Login')
-}

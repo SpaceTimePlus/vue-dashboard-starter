@@ -1,15 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import pages from './singlePages' // 单页面模块 login、register/lock.....
-import { Login } from './singlePages'
+import pages from './userPages' // 单页面模块 login、register/lock.....
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    component: Login,
+    component: () => import('@/views/UserPages/Login'),
     name: '登录',
     meta: {
       title: '登录'
