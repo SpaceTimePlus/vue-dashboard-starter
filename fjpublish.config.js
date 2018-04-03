@@ -8,7 +8,7 @@ module.exports = {
       port: 22,
       user: 'root',
       username: 'root',
-      password: 'h4db-8bf0N9ab23C9'
+      password: '****'
     },
     buildCommand: 'sit',
     localPath: 'dist',
@@ -21,7 +21,7 @@ module.exports = {
       port: 22,
       user: 'root',
       username: 'root',
-      password: 'h4db-8bf0N9ab23C9'
+      password: '****'
     },
     buildCommand: 'build',
     localPath: 'dist',
@@ -30,4 +30,3 @@ module.exports = {
   // global参数
   tag: 'v1.0' // 版本号
 }
-
