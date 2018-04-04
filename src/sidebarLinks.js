@@ -1,10 +1,10 @@
 export default [
   {
-    name: 'Dashboard',
+    name: '首页',
     icon: 'ti-panel',
     collapsed: false,
     children: [{
-      name: 'Overview',
+      name: '概览',
       path: '/admin/overview'
     },
     {
@@ -13,7 +13,7 @@ export default [
     }]
   },
   {
-    name: 'Components',
+    name: '贷前管理',
     icon: 'ti-package',
     children: [{
       name: 'Buttons',
@@ -45,93 +45,93 @@ export default [
     }]
   },
   {
-    name: 'Forms',
+    name: '贷中管理',
     icon: 'ti-clipboard',
     children: [{
-      name: 'Regular Forms',
+      name: '面审',
       path: '/forms/regular'
     },
     {
-      name: 'Extended Forms',
+      name: '签约',
       path: '/forms/extended'
     },
     {
-      name: 'Validation Forms',
+      name: '设备安装',
       path: '/forms/validation'
     },
     {
-      name: 'Wizard',
+      name: '家访',
+      path: '/forms/wizard'
+    },
+    {
+      name: '履约',
       path: '/forms/wizard'
     }
     ]
   },
   {
-    name: 'Table List',
+    name: '贷后服务',
     icon: 'ti-view-list-alt',
     collapsed: true,
     children: [{
-      name: 'Regular Tables',
+      name: '还款监控',
       path: '/table-list/regular'
     },
     {
-      name: 'Extended Tables',
+      name: '异常处理',
       path: '/table-list/extended'
-    },
-    {
-      name: 'Paginated Tables',
-      path: '/table-list/paginated'
     }
     ]
   },
   {
-    name: 'Maps',
+    name: '营销推广',
     icon: 'ti-map',
     children: [{
-      name: 'Google Maps',
+      name: '红包发放',
       path: '/maps/google'
     },
     {
-      name: 'Full Screen Maps',
+      name: '好友助力',
       path: '/maps/full-screen'
-    },
-    {
-      name: 'Vector Maps',
-      path: '/maps/vector-map'
     }
     ]
   },
   {
-    name: 'Charts',
+    name: '数据统计',
     icon: 'ti-gift',
     path: '/charts'
   },
   {
-    name: 'Calendar',
-    icon: 'ti-calendar',
-    path: '/calendar'
-  },
-  {
-    name: 'Pages',
+    name: '资产管理',
     icon: 'ti-gift',
     children: [{
-      name: 'User Page',
+      name: '资金',
       path: '/pages/user'
     },
     {
-      name: 'Timeline Page',
+      name: '抵押物',
+      path: '/pages/timeline'
+    }
+    ]
+  },
+  {
+    name: '系统设置',
+    icon: 'ti-gift',
+    children: [{
+      name: '用户管理',
+      path: '/pages/user'
+    },
+    {
+      name: '角色管理',
       path: '/pages/timeline'
     },
     {
-      name: 'Login Page',
+      name: '分支机构',
       path: '/login'
     },
     {
-      name: 'Register Page',
+      name: '抵押类型',
       path: '/register'
-    },
-    {
-      name: 'Lock Page',
-      path: '/lock'
     }
     ]
   }

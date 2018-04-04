@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
 
-    <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks">
+    <side-bar type="sidebar" :sidebar-links="$sidebar.sidebarLinks" :title="$sidebar.title" :background-color="$sidebar.backgroundColor"
+      :active-color="$sidebar.activeColor" :logo="$sidebar.logo">
       <user-menu></user-menu>
       <form class="navbar-form navbar-left navbar-search-form navbar-search-form-mobile" role="search">
         <div class="input-group">

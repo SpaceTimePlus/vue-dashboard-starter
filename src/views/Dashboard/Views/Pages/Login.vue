@@ -12,15 +12,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <router-link class="navbar-brand" to="/admin">Paper Dashboard PRO</router-link>
+          <router-link class="navbar-brand" to="/admin">管理系统</router-link>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <router-link to="/register" tag="li">
-              <a>Register</a>
+              <a>注册</a>
             </router-link>
             <router-link to="/admin/overview" tag="li">
-              <a>Dashboard</a>
+              <a>首页</a>
             </router-link>
           </ul>
         </div>
@@ -38,23 +38,23 @@
                 <form method="#" action="#">
                   <div class="card" data-background="color" data-color="blue">
                     <div class="card-header">
-                      <h3 class="card-title">Login</h3>
+                      <h3 class="card-title">登录</h3>
                     </div>
                     <div class="card-content">
                       <div class="form-group">
-                        <label>Email address</label>
-                        <input type="email" placeholder="Enter email" class="form-control input-no-border">
+                        <label>账号</label>
+                        <input type="text" placeholder="输入用户名/手机号" class="form-control input-no-border">
                       </div>
                       <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" placeholder="Password" class="form-control input-no-border">
+                        <label>密码</label>
+                        <input type="password" placeholder="输入密码" class="form-control input-no-border">
                       </div>
                     </div>
                     <div class="card-footer text-center">
-                      <button type="submit" class="btn btn-fill btn-wd ">Let's go</button>
-                      <div class="forgot">
+                      <button class="btn btn-fill btn-wd" @click="login">登录</button>
+                      <div class="forgot" style="margin-top: 10px;font-size: 11px;">
                         <router-link to="/register">
-                          Forgot your password?
+                          没有账号?
                         </router-link>
                       </div>
                     </div>
@@ -65,32 +65,24 @@
           </div>
         </div>
 
-        <footer class="footer footer-transparent">
-          <div class="container">
-            <div class="copyright">
-              &copy; Coded with
-              <i class="fa fa-heart heart"></i> by
-              <a href="https://github.com/cristijora" target="_blank">Cristi Jora</a>.
-              Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
-            </div>
-          </div>
-        </footer>
+        <Footer />
         <div class="full-page-background" style="background-image: url(static/img/background/background-2.jpg) "></div>
       </div>
     </div>
     <div class="collapse navbar-collapse off-canvas-sidebar">
       <ul class="nav nav-mobile-menu">
         <router-link to="/register" tag="li">
-          <a>Register</a>
+          <a>注册</a>
         </router-link>
         <router-link to="/admin/overview" tag="li">
-          <a>Dashboard</a>
+          <a>首页</a>
         </router-link>
       </ul>
     </div>
   </div>
 </template>
 <script>
+  import Footer from '@/components/Footer'
   export default {
     methods: {
       toggleNavbar () {
@@ -99,7 +91,13 @@
       closeMenu () {
         document.body.classList.remove('nav-open')
         document.body.classList.remove('off-canvas-sidebar')
+      },
+      login () {
+        // 登录
       }
+    },
+    components: {
+      Footer
     },
     beforeDestroy () {
       this.closeMenu()

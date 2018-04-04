@@ -18,7 +18,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li>
               <router-link to="/login" class="btn">
-                Looking to login?
+                去登录?
               </router-link>
             </li>
           </ul>
@@ -34,7 +34,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="header-text">
-                  <h2>Paper Dashboard PRO</h2>
+                  <h2>管理系统</h2>
                   <h4>Register for free and experience the dashboard today.</h4>
                   <hr>
                 </div>
@@ -107,16 +107,7 @@
           </div>
         </div>
 
-        <footer class="footer footer-transparent">
-          <div class="container">
-            <div class="copyright text-center">
-              &copy; Coded with
-              <i class="fa fa-heart heart"></i> by
-              <a href="https://github.com/cristijora" target="_blank">Cristi Jora</a>.
-              Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
     <div class="collapse navbar-collapse off-canvas-sidebar">
@@ -136,6 +127,7 @@
   </div>
 </template>
 <script>
+  import Footer from '@/components/Footer'
   export default {
     methods: {
       toggleNavbar () {
@@ -145,6 +137,9 @@
         document.body.classList.remove('nav-open')
         document.body.classList.remove('off-canvas-sidebar')
       }
+    },
+    components: {
+      Footer
     },
     beforeDestroy () {
       this.closeMenu()

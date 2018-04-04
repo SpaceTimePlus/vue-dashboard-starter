@@ -29,6 +29,10 @@ const SidebarPlugin = {
   install (Vue, options) {
     if (options && options.sidebarLinks) {
       SidebarStore.sidebarLinks = options.sidebarLinks
+      SidebarStore.title = options.title || undefined
+      SidebarStore.backgroundColor = options.backgroundColor || undefined
+      SidebarStore.activeColor = options.activeColor || undefined
+      SidebarStore.logo = options.logo || undefined
     }
     Vue.mixin({
       data () {

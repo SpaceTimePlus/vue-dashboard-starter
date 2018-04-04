@@ -13,7 +13,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <router-link class="navbar-brand" to="/admin">Paper Dashboard PRO</router-link>
+          <router-link class="navbar-brand" to="/admin">管理系统</router-link>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -33,31 +33,22 @@
               <div class="author">
                 <img class="avatar" src="static/img/faces/face-2.jpg" alt="...">
               </div>
-              <h4>Chet Faker</h4>
+              <h4>Da Hui</h4>
               <div class="form-group">
-                <input type="password" placeholder="Enter Password" class="form-control">
+                <input type="password" placeholder="输入密码" class="form-control">
               </div>
-              <button type="button" class="btn btn-wd">Unlock</button>
+              <button type="button" class="btn btn-wd">解锁</button>
             </div>
           </form>
         </div>
-        <footer class="footer footer-transparent">
-          <div class="container">
-            <div class="copyright">
-              &copy; Coded with
-              <i class="fa fa-heart heart"></i> by
-              <a href="https://github.com/cristijora" target="_blank">Cristi Jora</a>.
-              Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
     <div class="collapse navbar-collapse off-canvas-sidebar">
       <ul class="nav nav-mobile-menu">
         <li>
           <router-link to="/admin">
-            Dashboard
+            首页
           </router-link>
         </li>
       </ul>
@@ -65,6 +56,7 @@
   </div>
 </template>
 <script>
+  import Footer from '@/components/Footer'
   export default {
     methods: {
       toggleNavbar () {
@@ -74,6 +66,9 @@
         document.body.classList.remove('nav-open')
         document.body.classList.remove('off-canvas-sidebar')
       }
+    },
+    components: {
+      Footer
     },
     beforeDestroy () {
       this.closeMenu()

@@ -40,7 +40,7 @@
     props: {
       title: {
         type: String,
-        default: 'Paper Dashboard Pro'
+        default: '后台管理系统'
       },
       type: {
         type: String,
@@ -52,7 +52,7 @@
       },
       backgroundColor: {
         type: String,
-        default: 'black',
+        default: 'brown',
         validator: (value) => {
           let acceptedValues = ['white', 'brown', 'black']
           return acceptedValues.indexOf(value) !== -1
@@ -107,7 +107,6 @@
       }
     }
   }
-
 </script>
 <style>
   @media (min-width: 992px) {
