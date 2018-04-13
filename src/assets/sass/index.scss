@@ -71,3 +71,23 @@
 body.nude{
   background-color: #f4f3ef;
 }
+
+// 覆盖element‘
+.el-dialog{
+  position: absolute;
+  right: 0;
+}
+.el-dialog__header{
+ border-bottom: 1px solid #EFEFF4;
+}
+.el-dialog__footer{
+  border-top: 1px solid #EFEFF4;
+}
+.select-default.el-select .el-input input{
+  border-width: 1px;
+  border-color: #e8e7e3 !important;
+  background-color: #F3F2EE;
+}
+label{
+  font-weight: 400;
+}

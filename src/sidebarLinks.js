@@ -1,5 +1,26 @@
 export default [
   {
+    name: '系统设置',
+    icon: 'ti-gift',
+    children: [{
+      name: '用户管理',
+      path: '/system/manager'
+    },
+    {
+      name: '角色管理',
+      path: '/system/role'
+    },
+    {
+      name: '分支机构',
+      path: '/login'
+    },
+    {
+      name: '抵押类型',
+      path: '/register'
+    }
+    ]
+  },
+  {
     name: '首页',
     icon: 'ti-panel',
     collapsed: false,
@@ -111,27 +132,6 @@ export default [
     {
       name: '抵押物',
       path: '/pages/timeline'
-    }
-    ]
-  },
-  {
-    name: '系统设置',
-    icon: 'ti-gift',
-    children: [{
-      name: '用户管理',
-      path: '/pages/user'
-    },
-    {
-      name: '角色管理',
-      path: '/pages/timeline'
-    },
-    {
-      name: '分支机构',
-      path: '/login'
-    },
-    {
-      name: '抵押类型',
-      path: '/register'
     }
     ]
   }
