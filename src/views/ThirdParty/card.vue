@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <!--<h4 class="title">Custom table with pagination</h4>-->
       <p class="category">
-        角色不同，权限不同。
+        将客户银行卡绑定到支付平台
       </p>
     </div>
     <div class="col-md-12 card">
@@ -13,23 +13,29 @@
       <div class="card-content row">
         <div class="col-sm-6">
           <div class="pull-left">
-            <label>
-              <input type="search" class="form-control input-sm" placeholder="Search records" v-model="searchQuery" aria-controls="datatables">
-            </label>
+
           </div>
         </div>
         <div class="col-sm-6">
           <div class="pull-right">
-            <button class="btn btn-icon btn-twitter" @click="showAddDialog = true">
-              <i class="ti-plus"></i>
+            <button class="btn btn-icon btn-twitter btn-sm" @click="importFromExcel">
+              批量绑卡
+            </button>
+            <input type="file" id="import-from-excel" @change="changeFile" style="display: none;"/>
+          </div>
+          <div class="pull-right" style="margin-right: 16px;">
+            <button class="btn btn-icon btn-twitter btn-sm" @click="showAddDialog = true">
+              添加绑卡
             </button>
           </div>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-12" style="margin-top: 16px;">
           <el-table class="table-striped"
                     :data="queriedData"
                     border
                     style="width: 100%">
+            <el-table-column type="index">
+            </el-table-column>
             <el-table-column v-for="column in tableColumns"
                              :key="column.label"
                              :min-width="column.minWidth"
@@ -37,9 +43,9 @@
                              :label="column.label">
             </el-table-column>
             <el-table-column
-              :min-width="120"
+              :min-width="140"
               fixed="right"
-              label="Actions">
+              label="操作">
               <template slot-scope="props">
                 <a class="btn btn-simple btn-xs btn-info btn-icon like" @click="handleLike(props.$index, props.row)"><i class="ti-heart"></i></a>
                 <a class="btn btn-simple btn-xs btn-warning btn-icon edit" @click="handleEdit(props.$index, props.row)"><i class="ti-pencil-alt"></i></a>
@@ -70,7 +76,8 @@
   import {Table, TableColumn, Select, Option} from 'element-ui'
   import PPagination from '@/components/UIComponents/Pagination.vue'
   import AddDialog from '@/components/Dialog/addDialog'
-  import users from './users'
+  import XLSX from 'xlsx'
+  import {EXCEL_HEADER_BIND_CARD} from '@/common/common'
   Vue.use(Table)
   Vue.use(TableColumn)
   Vue.use(Select)
@@ -84,12 +91,6 @@
       pagedData () {
         return this.tableData.slice(this.from, this.to)
       },
-      /***
-       * Searches through table data and returns a paginated array.
-       * Note that this should not be used for table with a lot of data as it might be slow!
-       * Do the search and the pagination on the server and display the data retrieved from server instead.
-       * @returns {computed.pagedData}
-       */
       queriedData () {
         if (!this.searchQuery) {
           this.pagination.total = this.tableData.length
@@ -132,30 +133,30 @@
           total: 0
         },
         searchQuery: '',
-        propsToSearch: ['name', 'email', 'age', 'salary'], // 搜索项
+        propsToSearch: ['name', 'idcard', 'bankcard', 'mobile'], // 搜索项
         tableColumns: [
           {
             prop: 'name',
-            label: 'Name',
+            label: '姓名',
+            minWidth: 120
+          },
+          {
+            prop: 'idcard',
+            label: '身份证号',
             minWidth: 200
           },
           {
-            prop: 'email',
-            label: 'Email',
-            minWidth: 250
+            prop: 'bankcard',
+            label: '银行卡号',
+            minWidth: 200
           },
           {
-            prop: 'age',
-            label: 'Age',
-            minWidth: 100
-          },
-          {
-            prop: 'salary',
-            label: 'Salary',
+            prop: 'mobile',
+            label: '银行预留手机号',
             minWidth: 120
           }
         ],
-        tableData: users,
+        tableData: [],
         showAddDialog: false,
         model: {
           name: {
@@ -163,66 +164,45 @@
             label: '姓名',
             value: '',
             type: 'text',
-            placeholder: '输入您的姓名',
-            after: '$'
+            placeholder: '输入姓名'
           },
-          email: {
-            name: 'email',
-            label: '邮箱',
+          idcard: {
+            name: 'idcard',
+            label: '身份证号',
             value: '',
-            type: 'email',
-            placeholder: '输入您的邮箱',
-            before: '￥'
+            type: 'text',
+            placeholder: '输入身份证号'
           },
-          password: {
-            name: 'password',
-            label: '密码',
+          bankcard: {
+            name: 'bankcard',
+            label: '银行卡号',
             value: '',
-            type: 'password',
-            placeholder: '输入您的密码'
+            type: 'number',
+            placeholder: '输入银行卡号'
           },
-          desc: {
-            name: 'desc',
-            label: '备注',
+          mobile: {
+            name: 'mobile',
+            label: '手机号',
             value: '',
-            type: 'textarea',
-            placeholder: '输入备注信息'
-          },
-          type: {
-            name: 'type',
-            label: '类型',
-            value: 2,
-            type: 'select',
-            placeholder: '选择类型',
-            options: [
-              {
-                label: '管理人员',
-                value: 1
-              },
-              {
-                label: '编辑人员',
-                value: 2
-              },
-              {
-                label: '运营人员',
-                value: 3
-              }
-            ]
+            type: 'text',
+            placeholder: '输入银行预留手机号'
           }
         },
         modelValidations: {
-          email: {
-            required: true,
-            email: true
-          },
-          password: {
-            required: true,
-            min: 5
-          },
           name: {
+            required: true
+          },
+          idcard: {
             required: true,
-            min: 4,
-            max: 10
+            regex: '(^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$)|(^[1-9]\\d{5}\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{2}[0-9Xx]$)'
+          },
+          bankcard: {
+            required: true,
+            regex: '^([1-9]{1})(\\d{14}|\\d{18})$'
+          },
+          mobile: {
+            required: true,
+            regex: '^1[3|4|5|6|7|8|9]{1}[0-9]{1}[0-9]{8}$'
           }
         }
       }
@@ -235,7 +215,48 @@
         this.showAddDialog = true
       },
       addSubmit (model) {
-        console.log('addSubmit', model)
+        this.closeAddDialog()
+        this.tableData = [model, ...this.tableData]
+      },
+      importFromExcel () {
+        // 从excel批量导入
+        document.getElementById('import-from-excel').click()
+      },
+      changeFile (e) {
+        console.log(e)
+        let vm = this
+        let rABS = true
+        let files = e.target.files
+        let f = files[0]
+        console.log(f)
+        let reader = new FileReader()
+        reader.onload = function (e) {
+          let data = e.target.result
+          if (!rABS) data = new Uint8Array(data)
+          let workbook = XLSX.read(data, {type: rABS ? 'binary' : 'array'})
+          let worksheet = workbook.Sheets[workbook.SheetNames[0]]
+          let jsonData = XLSX.utils.sheet_to_json(worksheet)
+          // 组装数据
+          let list = []
+          if (jsonData && jsonData instanceof Array) {
+            jsonData.forEach(item => {
+              let row = {}
+              for (let prop in item) {
+                row[EXCEL_HEADER_BIND_CARD[prop]] = item[prop]
+              }
+              list.push(row)
+            })
+            console.log('list', list)
+            vm.submitExcelData(list)
+          }
+        }
+        if (rABS) reader.readAsBinaryString(f); else reader.readAsArrayBuffer(f)
+      },
+      submitExcelData (list) {
+        let vm = this
+        vm.$store.dispatch('bindCard', { userId: 1, data: list })
+        // 添加到当前列表
+        vm.tableData = [...vm.tableData, ...list]
       },
       handleLike (index, row) {
         alert(`Your want to like ${row.id}`)

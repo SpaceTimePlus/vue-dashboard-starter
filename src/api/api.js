@@ -43,3 +43,21 @@ export function createJournal (journal) {
   let url = apis.api(`${apis.CREATE_JOURNAL}`)
   return http.post(url, journal)
 }
+
+/***
+ *  Aliyun sts
+ * @returns {*}
+ */
+export function aliyunSts () {
+  let url = apis.ossapi(apis.ALIYUN_STS)
+  return http.get(url)
+}
+
+/***
+ *  Aliyun signatrue
+ * @returns {*}
+ */
+export function aliyunSignatrue () {
+  let url = apis.ossapi(apis.ALIYUN_SIGNATRUE)
+  return http.get(url)
+}

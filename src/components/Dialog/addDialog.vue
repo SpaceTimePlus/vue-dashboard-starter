@@ -1,47 +1,23 @@
 <template>
-  <el-dialog :title="title" :visible="showDialog" @close="closeDialog" @open="openDialog" modal="false" :width="width" :fullscreen="fullscreen" append-to-body>
+  <el-dialog :title="title" :visible="showDialog" @close="closeDialog" @open="openDialog" modal="false" :width="width"
+             :fullscreen="fullscreen" append-to-body>
     <div>
-      <!--<form class="form-horizontal">-->
-        <!--<div class="card-content">-->
-        <!--<div class="form-group" v-for="item in model">-->
-          <!--<label>{{item.label}}</label>-->
-          <!--<input :type="item.type"-->
-                 <!--name="email"-->
-                 <!--v-validate="modelValidations[item.name]"-->
-                 <!--v-model="item.value"-->
-                 <!--:placeholder="item.placeholder"-->
-                 <!--class="form-control">-->
-        <!--</div>-->
-
-        <!--<el-select class="select-success"-->
-                   <!--size=""-->
-                   <!--placeholder="Single Select"-->
-                   <!--v-model="select">-->
-          <!--<el-option v-for="option in countries"-->
-                     <!--:value="option.value"-->
-                     <!--:label="option.label"-->
-                     <!--:key="option.value">-->
-          <!--</el-option>-->
-        <!--</el-select>-->
-        <!--</div>-->
-      <!--</form>-->
-
       <form class="form-horizontal">
         <div class="form-group" v-for="item in model">
-          <block v-if="item.type === 'text' || item.type === 'email' || item.type === 'number' || item.type === 'url' || item.type === 'password'">
+          <block
+            v-if="item.type === 'text' || item.type === 'email' || item.type === 'number' || item.type === 'url' || item.type === 'password'">
             <label class="col-md-3 control-label">{{item.label}}</label>
             <div class="col-md-9">
 
-              <div class="input-group">
-                <span class="input-group-addon">{{item.before}}</span>
+              <div class="input-group" STYLE="width: 100%">
+                <span v-if="item.before" class="input-group-addon">{{item.before}}</span>
                 <input :type="item.type"
                        v-validate="modelValidations[item.name]"
                        v-model="item.value"
                        :placeholder="item.placeholder"
                        class="form-control">
-                <span class="input-group-addon">{{item.after}}</span>
+                <span v-if="item.after" class="input-group-addon">{{item.after}}</span>
               </div>
-
 
             </div>
           </block>
@@ -81,12 +57,12 @@
   </el-dialog>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
-  import { mapFields } from 'vee-validate'
-  export default{
+  import {mapGetters} from 'vuex'
+  import {mapFields} from 'vee-validate'
+
+  export default {
     data () {
-      return {
-      }
+      return {}
     },
     props: {
       title: {
@@ -160,8 +136,7 @@
         })
       }
     },
-    components: {
-    }
+    components: {}
   }
 </script>
 <style>

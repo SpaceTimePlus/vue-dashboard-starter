@@ -17,7 +17,7 @@ export function journalApi (url) {
 }
 
 /***
- * 微信接口
+ * 接口
  * @param url 接口地址
  * @returns {*}
  */
@@ -25,6 +25,14 @@ export function api (url) {
   return apiHost + url
 }
 
+/***
+ * oss接口
+ * @param url 接口地址
+ * @returns {*}
+ */
+export function ossapi (url) {
+  return 'https://portal.weiwuu.com' + url
+}
 // API 列表 -------------------------------------------------------------------------
 
 // 日志 API -------------------------------------------------------------------------
@@ -35,4 +43,23 @@ export function api (url) {
  */
 export const CREATE_JOURNAL = '/create/journal'
 
+// OSS -----------------------------------------------------------------------------
+/**
+ * Aliyun STS
+ * @type {string}
+ */
+export const ALIYUN_STS = '/v1/aliyun/sts'
+/**
+ * Aliyun STS
+ * @type {string}
+ */
+export const ALIYUN_SIGNATRUE = '/v1/aliyun/oss/signature'
+
 // 用户 -----------------------------------------------------------------------------
+
+// 第三方集成 -----------------------------------------------------------------------------
+/**
+ * 绑卡
+ * @type {string}
+ */
+export const BIND_CARD = '/bind/card'

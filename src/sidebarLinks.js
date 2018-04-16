@@ -1,5 +1,18 @@
 export default [
   {
+    name: '第三方集成',
+    icon: 'ti-panel',
+    children: [{
+      name: '绑卡',
+      path: '/thirdparty/bindcard'
+    },
+    {
+      name: '支付',
+      path: '/thirdparty/payment'
+    }
+    ]
+  },
+  {
     name: '系统设置',
     icon: 'ti-gift',
     children: [{

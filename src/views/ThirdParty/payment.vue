@@ -70,7 +70,6 @@
   import {Table, TableColumn, Select, Option} from 'element-ui'
   import PPagination from '@/components/UIComponents/Pagination.vue'
   import AddDialog from '@/components/Dialog/addDialog'
-  import users from './users'
   Vue.use(Table)
   Vue.use(TableColumn)
   Vue.use(Select)
@@ -155,7 +154,7 @@
             minWidth: 120
           }
         ],
-        tableData: users,
+        tableData: [],
         showAddDialog: false,
         model: {
           name: {

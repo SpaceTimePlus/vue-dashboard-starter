@@ -32,5 +32,22 @@ export default [
         component: () => import('@/views/System/role')
       }
     ]
+  },
+  {
+    path: '/thirdparty',
+    component: () => import('@/views/Dashboard/Layout/DashboardLayout'),
+    redirect: '/thirdparty/bindcard',
+    children: [
+      {
+        path: 'bindcard',
+        name: '绑卡',
+        component: () => import('@/views/ThirdParty/bindCard')
+      },
+      {
+        path: 'payment',
+        name: '支付',
+        component: () => import('@/views/ThirdParty/payment')
+      }
+    ]
   }
 ]
