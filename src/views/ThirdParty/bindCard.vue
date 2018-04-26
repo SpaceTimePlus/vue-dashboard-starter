@@ -176,7 +176,7 @@
       submitExcelData (list) {
         let vm = this
         vm.$store.dispatch('bindCard', { userId: 1, data: list })
-        // 添加到当前列表
+        // 添加到列表
         vm.tableData = [...vm.tableData, ...list]
       },
       importExcel (file) {
